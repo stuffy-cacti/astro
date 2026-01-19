@@ -1,8 +1,21 @@
 ---
-const platform = "github";
-const username = "withastro";
+import Social from './Social.astro';
+
 ---
+<style>
+    footer {
+        display: flex;
+        gap: 0.2rem;
+        margin-top: 2rem;
+    }
+</style>
 
 <footer>
-    <p>Learn more about my projects on <a href={'https://www.${platform}.com/${username}'}>{platform}</a></p>
+    <Social platform="github" username="shibetech" />
+    <Social platform="x" username="shibe" />
+    <Social platform="instagram" username="MuchWowSuchAmazing" />
+    <Social platform="facebook" username="shibarian" />
+    <Social platform="youtube" username="shibe-compound" />
+    <Social platform="mastodon" username="fredoom-shibe" />
+    <Social platform="snapchat" username="angryshiba" />
 </footer>
