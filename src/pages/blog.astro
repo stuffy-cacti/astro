@@ -1,29 +1,14 @@
 ---
-import Navigation from '../components/Navigation.astro'
-import Footer from '../components/Footer.astro';
-import '../styles/global.css'
-
+import BaseLayout from '../layouts/BaseLayout.astro';
+import BlogPost from '../components/BlogPost.astro';
+const allPosts = Object.values(import.meta.glob('./posts/*.md', { eager: true }));
 const pageTitle = "My Astro Learning blog";
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-        <title>{pageTitle}</title>
-	</head>
-	<body>
-        <Navigation />
+<BaseLayout pageTitle={pageTitle}>
 
-        <h1>{pageTitle}</h1>
-        <h1>I am deep sea creature, Kraken!</h1>
-        <ul>
-            <li><a href="/post/post-1/">Tentacle #1</a></li>
-            <li><a href="/post/post-2/">Tentacle #2</a></li>
-            <li><a href="/post/post-3/">Tentacle #3</a></li>
-        </ul>
-        <Footer />
-	</body>
-</html>
+    <h2>I am deep sea creature, Kraken!</h2>
+    <ul>
+        {allPosts.map((post: any) => <BlogPost url={post.url} title={post.frontmatter.title} />)}
+    </ul>
+</BaseLayout>
